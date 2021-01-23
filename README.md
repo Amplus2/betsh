@@ -12,6 +12,11 @@ sense, using it as your login shell is probably not the best idea.
 
 Sets the variable `a` to the value `b`. If `a` doesn't exist, it is created in
 the current scope.
+
+    c = $a
+
+Sets the variable `c` to the value of the variable `a`.
+
 When variables go out of scope, they are automatically deleted.
 
 ### Functions
@@ -40,3 +45,25 @@ betsh standard library and PATH, in that order.
     (f 1 2 3)
 
 Reads the stdout of `f` when called with the parameters `1`, `2` and `3`.
+
+## If
+
+    a = (if 0 1
+         else 2)
+
+Sets the variable `a` to `1`, because `0` evaluates to `true`, just like in sh.
+
+    if false print lol
+    elif false print lel
+    else-if 1 print kek
+    else print kekw
+
+Prints "kekw", because `false` and `1` evaluate to `false`.
+
+    make
+    else print compilation failed
+
+Shows how to use `else` with other (micro)processes, by calling `print` when
+`make` fails.
+
+    if make print compiled successfully
