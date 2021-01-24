@@ -1,0 +1,8 @@
+fn ! b =
+    if $b false ; else true
+
+fn & 1 2 =
+    if $1 $2 ; else false
+
+fn | 1 2 =
+    if $1 true ; elif $2 true ; else false

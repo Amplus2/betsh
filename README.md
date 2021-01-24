@@ -54,11 +54,10 @@ Reads the stdout of `f` when called with the parameters `1`, `2` and `3`.
 Sets the variable `a` to `1`, because `0` evaluates to `true`, just like in sh.
 
     if false print lol
-    elif false print lel
-    else-if 1 print kek
-    else print kekw
+    elif 1 print lel
+    else print kek
 
-Prints "kekw", because `false` and `1` evaluate to `false`.
+Prints "kek", because `false` and `1` evaluate to `false`.
 
     make
     else print compilation failed
