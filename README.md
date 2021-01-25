@@ -106,4 +106,5 @@ Prints "lulw" in an infinite loop.
 | !=       | probes if any of the parameters are not equal (sets ec)           |
 | \|       | probes if any of the parameters evaluate to true (sets ec)        |
 | &        | probes if all of the parameters evaluate to true (sets ec)        |
+| !        | inverts the parameter (sets ec)                                   |
 <!--TODO: more-->
