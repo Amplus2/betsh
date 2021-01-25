@@ -46,6 +46,10 @@ betsh standard library and PATH, in that order.
 
 Reads the stdout of `f` when called with the parameters `1`, `2` and `3`.
 
+    f = [x y]{ + $x $y }
+
+Defines the variable `f` using a lambda.
+
 ## If
 
     a = (if 0 1
@@ -66,3 +70,29 @@ Shows how to use `else` with other (micro)processes, by calling `print` when
 `make` fails.
 
     if make print compiled successfully
+
+## For
+
+    for 1 2 3 [i]{
+        print $i
+    }
+
+Prints:
+
+    1
+    2
+    3
+
+Can also be shortened to:
+
+    for 1 2 3 print
+
+because print is a function that takes one argument.
+
+## While
+
+    while true {
+        print lulw
+    }
+
+Prints "lulw" in an infinite loop.
