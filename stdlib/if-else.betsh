@@ -1,13 +1,16 @@
 import native/__if_impl as __if
 
-fn if cond block =
+fn if cond block {
     bool = (ec $cond)
     __if_impl $bool $block
     $bool
+}
 
-fn else block =
+fn else block {
     if '! $!' $block
+}
 
-fn elif cond block =
+fn elif cond block {
     if $! true
     else if $cond $block
+}

@@ -21,8 +21,9 @@ When variables go out of scope, they are automatically deleted.
 
 ### Functions
 
-    fn f a b c =
+    fn f a b c {
         # ...
+    }
 
 Defines the function `f` with the parameters `a`, `b` and `c`.
 

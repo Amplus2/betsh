@@ -1,0 +1,6 @@
+fn while cond block {
+    if $cond {
+        $block
+        while $cond $block
+    }
+}
