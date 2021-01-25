@@ -97,3 +97,13 @@ because print is a function that takes one argument.
     }
 
 Prints "lulw" in an infinite loop.
+
+## Other stdlib functions
+
+| function | description                                                       |
+|----------|-------------------------------------------------------------------|
+| =        | probes if all parameters are equal (sets ec)                      |
+| !=       | probes if any of the parameters are not equal (sets ec)           |
+| \|       | probes if any of the parameters evaluate to true (sets ec)        |
+| &        | probes if all of the parameters evaluate to true (sets ec)        |
+<!--TODO: more-->

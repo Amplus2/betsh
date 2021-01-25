@@ -1,0 +1,4 @@
+fn ec block {
+    $block
+    print $!
+}
