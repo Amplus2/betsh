@@ -35,10 +35,13 @@ Function calls are run through either microprocesses or processes,
 microprocesses being low-overhead, non-forking emulations of processes, which
 means that they each have their own stdin, stdout, stderr and exit code.
 
-Pipes work exactly like in sh.
+Pipes work exactly like in sh, with the addition that they can also be used with
+microprocesses.
+
+<!--TODO: std* redirections-->
 
 The exit code of the last (micro)process that was ran is stored in the
-pseudovariable `!`.
+pseudovariable `!`, like in sh.
 
 Function calls search for the function in the current file, imported libraries,
 betsh standard library and PATH, in that order.
