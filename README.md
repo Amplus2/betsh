@@ -8,12 +8,12 @@ sense, using it as your login shell is probably not the best idea.
 
 ### Variables
 
-    a = b
+    a=b
 
 Sets the variable `a` to the value `b`. If `a` doesn't exist, it is created in
 the current scope.
 
-    c = $a
+    c=$a
 
 Sets the variable `c` to the value of the variable `a`.
 

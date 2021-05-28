@@ -1,7 +1,7 @@
 import native/__if_impl as __if
 
 fn if cond block {
-    bool = (ec $cond)
+    bool=(ec $cond)
     __if $bool $block
     $bool
 }
