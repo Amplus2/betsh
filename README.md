@@ -101,13 +101,56 @@ because print is a function that takes one argument.
 
 Prints "lulw" in an infinite loop.
 
+## Streams
+
+Like in `sh`, there are streams. But `betsh` streams are massively improved.
+Let's start with the predefined streams, they are like in `sh`:
+
+| id | name     |
+|----|----------|
+| 0  | `stdin`  |
+| 1  | `stdout` |
+| 2  | `stderr` |
+
+### `sh` redirections
+
+Like in `sh`, you can redirect to and from streams, as well as files:
+
+    print hello >&2
+    print omg it works > /tmp/file
+    echo xxx >> /tmp/file
+    echo < /tmp/file
+    echo lel <&1
+
+### `betsh` streams
+
+    s=(mkstream)
+
+Assigns `s` to the id of a new stream, like `3`. It can now be written to and
+read from, like a normal `sh` stream:
+
+    print hi >&$s
+
+Now `s` is closed. But to allow for IPC through streams, we don't want this, so
+you can also use the append operators here:
+
+    s=(mkstream)
+    print <&$s &
+    print 1 >>&$s
+    print 2 >>&$s
+    print 3 >>&$s
+    # output:
+    # 1
+    # 2
+    # 3
+
 ## Other stdlib functions
 
 | function | description                                                       |
 |----------|-------------------------------------------------------------------|
-| =        | probes if all parameters are equal (sets ec)                      |
-| !=       | probes if any of the parameters are not equal (sets ec)           |
-| \|       | probes if any of the parameters evaluate to true (sets ec)        |
-| &        | probes if all of the parameters evaluate to true (sets ec)        |
-| !        | inverts the parameter (sets ec)                                   |
+| `=`      | probes if all parameters are equal (sets ec)                      |
+| `!=`     | probes if any of the parameters are not equal (sets ec)           |
+| `|`      | probes if any of the parameters evaluate to true (sets ec)        |
+| `&`      | probes if all of the parameters evaluate to true (sets ec)        |
+| `!`      | inverts the parameter (sets ec)                                   |
 <!--TODO: more-->
