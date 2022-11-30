@@ -1,4 +1,4 @@
-fn ec block {
+ec=[block] {
     $block
     print $?
 }

@@ -1,14 +1,14 @@
-fn if cond block {
+if=[cond block] {
     bool=(ec $cond)
     __if_impl $bool $block
     $bool
 }
 
-fn else block {
+else=[block] {
     if '! $?' $block
 }
 
-fn elif cond block {
+elif=[cond block] {
     if $? true
     else if $cond $block
 }

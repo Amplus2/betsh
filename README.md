@@ -21,8 +21,8 @@ When variables go out of scope, they are automatically deleted.
 
 ### Functions
 
-    fn f a b c {
-        # ...
+    f=[a b c] {
+        + a b c
     }
 
 Defines the function `f` with the parameters `a`, `b` and `c`.
@@ -44,26 +44,22 @@ The exit code of the last (micro)process that was ran is stored in the
 pseudovariable `?`, like in sh.
 
 Function calls search for the function in the current file, imported libraries,
-betsh standard library and PATH, in that order.
+`betsh` standard library and `PATH`, in that order.
 
     (f 1 2 3)
 
 Reads the stdout of `f` when called with the parameters `1`, `2` and `3`.
 
-    f = [x y]{ + $x $y }
-
-Defines the variable `f` using a lambda.
-
 There is also a special case for a variable number of arguments:
 
-    g = [@]{ print $@ }
+    g=[@]{ print $@ }
 
 Defines the variable `g` as a function that takes any number of arguments and
 prints all of them.
 
 ## If
 
-    a = (if 0 1 ; else 2)
+    a=(if 0 1 ; else 2)
 
 Sets the variable `a` to `1`, because `0` evaluates to `true`, just like in sh.
 
