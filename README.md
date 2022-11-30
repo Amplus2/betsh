@@ -54,10 +54,16 @@ Reads the stdout of `f` when called with the parameters `1`, `2` and `3`.
 
 Defines the variable `f` using a lambda.
 
+There is also a special case for a variable number of arguments:
+
+    g = [@]{ print $@ }
+
+Defines the variable `g` as a function that takes any number of arguments and
+prints all of them.
+
 ## If
 
-    a = (if 0 1
-         else 2)
+    a = (if 0 1 ; else 2)
 
 Sets the variable `a` to `1`, because `0` evaluates to `true`, just like in sh.
 
