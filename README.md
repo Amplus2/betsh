@@ -41,7 +41,7 @@ microprocesses.
 <!--TODO: std* redirections-->
 
 The exit code of the last (micro)process that was ran is stored in the
-pseudovariable `!`, like in sh.
+pseudovariable `?`, like in sh.
 
 Function calls search for the function in the current file, imported libraries,
 betsh standard library and PATH, in that order.
@@ -118,9 +118,11 @@ Like in `sh`, you can redirect to and from streams, as well as files:
 
     print hello >&2
     print omg it works > /tmp/file
-    echo xxx >> /tmp/file
+    echo second line >> /tmp/file
     echo < /tmp/file
     echo lel <&1
+
+<!--TODO: isn't the last example senseless?!-->
 
 ### `betsh` streams
 
