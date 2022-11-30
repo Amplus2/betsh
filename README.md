@@ -71,7 +71,7 @@ Sets the variable `a` to `1`, because `0` evaluates to `true`, just like in sh.
     elif 1 print lel
     else print kek
 
-Prints "kek", because `false` and `1` evaluate to `false`.
+Prints "kek", because `false` and non-zero numbers evaluate to `false`.
 
     make
     else print compilation failed
@@ -93,11 +93,11 @@ Prints:
     2
     3
 
-Can also be shortened to:
+Can also be η-reduced (shortened) to:
 
     for 1 2 3 print
 
-because print is a function that takes one argument.
+because print is a unary (one argument) function.
 
 ## While
 
@@ -109,11 +109,11 @@ Prints "lulw" in an infinite loop.
 
 ## Streams
 
-Like in `sh`, there are streams. But `betsh` streams are massively improved.
-Let's start with the predefined streams, they are like in `sh`:
+Like in `sh`, there are streams. But `betsh` streams are massively improved. The
+standard C streams are pre-defined, just like in `sh`:
 
 | id | name     |
-|----|----------|
+| -- | -------- |
 | 0  | `stdin`  |
 | 1  | `stdout` |
 | 2  | `stderr` |
@@ -146,7 +146,7 @@ you can also use the append operators here:
     print <&$s &
     print 1 >>&$s
     print 2 >>&$s
-    print 3 >>&$s
+    print 3 >&$s
     # output:
     # 1
     # 2
