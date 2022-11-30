@@ -152,13 +152,50 @@ you can also use the append operators here:
     # 2
     # 3
 
-## Other stdlib functions
+## Libraries
 
-| function | description                                                       |
-|----------|-------------------------------------------------------------------|
-| `=`      | probes if all parameters are equal (sets ec)                      |
-| `!=`     | probes if any of the parameters are not equal (sets ec)           |
-| `|`      | probes if any of the parameters evaluate to true (sets ec)        |
-| `&`      | probes if all of the parameters evaluate to true (sets ec)        |
-| `!`      | inverts the parameter (sets ec)                                   |
+Using shell functions defined somewhere else is a mess in every `sh`
+implementation around, `betsh` tries to fix this:
+
+    import mylibrary
+    mylibrary.some-function arg1 arg2 arg3
+
+Imports a library and calls a function defined in it.
+
+    import mylibrary/*
+    some-function arg1 arg2 arg3
+
+Imports everything defined in a library and calls a function from there.
+
+    import mylibrary/some-function
+    some-function arg1 arg2 arg3
+
+Imports only a specific function from a library and calls it.
+
+    import mylibrary/????-function
+
+Imports everything defined in a library that matches a wildcard.
+
+### Restrictions on naming
+
+You can use basically any non-whitespace Unicode character for your names, but
+you may not ever define or use anything with two leading underbars (`__`), as
+that is reserved for internals of the implementation and standard library.
+
+### stdlib functions
+
+| function            | arguments      | description                                                             | ec                                  |
+| ------------------- | -------------- | ----------------------------------------------------------------------- | ----------------------------------- |
+| `if`                | `cond` `block` | runs `block` if `cond`'s ec is 0                                        |                                     |
+| `elif`              | `cond` `block` | runs `block` if the previous command's ec is not 0 and `cond`'s ec is 0 |                                     |
+| `else`              | `block`        | runs `block` if the previous command's ec is not 0                      | `block`                             |
+| `while`             | `cond` `block` | runs `block` while `cond` returns 0                                     | `block`                             |
+| `for`               | `@` `f`        | calls `f` with every argument before it                                 | `f`                                 |
+| `mkstream`          |                | creates a new stream and prints the id (fd)                             | 0 if everything worked              |
+| `=`                 | `@`            | probes if all parameters are equal (sets ec)                            | $1 == ... == $n                     |
+| `!=`                | `@`            | probes if any of the parameters are not equal (sets ec)                 | ! "= $@"                            |
+| `&`                 | `@`            | probes if all of the parameters evaluate to true (sets ec)              | $1 && ... && $n                     |
+| <code>&vert;</code> | `@`            | probes if any of the parameters evaluate to true (sets ec)              | $1 &vert;&vert; ... &vert;&vert; $n |
+| `!`                 | `b`            | inverts `b`                                                             | `b` ? false : true                  |
+
 <!--TODO: more-->
